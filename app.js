@@ -1,9 +1,12 @@
 const subscr = document.getElementsByClassName('subscreen')[0];
-
+let pressedeq = false;
+document.getElementById('box').focus();
 document.addEventListener('click', (event) => {
     doStuff(event);
 })
-let pressedeq = false;
+document.addEventListener('keydown', (event) => {
+    document.getElementById(`id${event.key}`).click();
+})
 function doStuff(event) {
     let insidetext = event.target.innerText;
 
@@ -14,6 +17,7 @@ function doStuff(event) {
         if (insidetext === '=') {
             subscr.innerText = String(`= ${eval(subscr.innerText).toFixed(4)}`);
             pressedeq = true;
+            subscr.scroll(0, 700)
         }
         if (insidetext !== 'C' && insidetext !== '=' && pressedeq) {
             console.log('came');
